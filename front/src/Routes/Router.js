@@ -3,6 +3,7 @@ import Layout from './Layout'
 import Home from "../components/Home";
 import Composers from '../components/Composers'
 import Works from '../components/Works'
+import Work from "../components/Work";
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 path: 'composers/:composerId',
                 element: <Works />
+            },
+            {
+                path: 'composers/:id/:workId',
+                element: <Work />
             }
         ]
     }
