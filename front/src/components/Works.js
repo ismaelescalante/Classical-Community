@@ -21,13 +21,13 @@ const Works = () => {
   return (
     <>
     <WorksHeader>
-    <WorksTitle>Works by {info.name}</WorksTitle>
+    <WorksTitle>Works by {info.complete_name}</WorksTitle>
     <WorksImg src={info.portrait} alt='portrait of this composer'></WorksImg>
     </WorksHeader>
 
     {works.map((work) => (
         <WorksList key={work.id}>
-            <WorkTitle>{work.title}</WorkTitle>
+            <WorkTitle to={`${work.id}`}>{work.title}</WorkTitle>
         </WorksList>
     ))}
    </>

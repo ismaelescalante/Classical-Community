@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
+
 export const NavbarContainer = styled.nav`
     display: flex;
     flex-direction: row;
@@ -8,6 +9,7 @@ export const NavbarContainer = styled.nav`
     background-color: white;
     color: black;
     border-bottom: 2px solid black;
+    padding: 1rem;
     font-family: 'Ibarra Real Nova', serif;
 `
 
