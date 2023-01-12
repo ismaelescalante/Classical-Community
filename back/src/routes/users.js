@@ -26,6 +26,6 @@ router.post('/', async (req, res) => {
     res.send({name: user.name, email: user.email})
 })
 
-router.post('/')
+
 
 module.exports = router;
