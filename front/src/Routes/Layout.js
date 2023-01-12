@@ -13,7 +13,7 @@ const Layout = () => {
             <NavItem>
             <NavLinks to="/">Home</NavLinks>
             <NavLinks to="composers">Composers</NavLinks>
-            <NavLinks to="works">Works</NavLinks>
+            <NavLinks to="login">Login</NavLinks>
             </NavItem>
             
         </NavbarContainer>

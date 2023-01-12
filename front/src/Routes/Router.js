@@ -4,6 +4,7 @@ import Home from "../components/Home";
 import Composers from '../components/Composers'
 import Works from '../components/Works'
 import Work from "../components/Work";
+import Login from "../components/Login";
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: 'composers/:id/:workId',
                 element: <Work />
+            },
+            {
+                path: 'login',
+                element: <Login />
             }
         ]
     }
