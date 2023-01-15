@@ -26,6 +26,17 @@ export const LoginForm = styled.form`
     font-weight: 500;
     font-size: 24px;
 `
+export const LoginName = styled.input`
+    outline: none;
+    width: 250px;
+    margin-top: -15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 25px;
+    font-family: 'Ibarra Real Nova';
+     font-size: 20px;   
+`
+
 export const LoginEmail = styled.input`
     outline: none;
     width: 250px;
@@ -33,6 +44,8 @@ export const LoginEmail = styled.input`
     border: 1px solid black;
     border-radius: 5px;
     height: 25px;
+    font-family: 'Ibarra Real Nova';
+     font-size: 20px;   
 `
 export const LoginPass = styled.input`
     outline: none;
@@ -41,6 +54,8 @@ export const LoginPass = styled.input`
     border: 1px solid black;
     border-radius: 5px;
     height: 25px;
+    font-family: 'Ibarra Real Nova';
+    font-size: 20px;
 `
 
 export const LoginBtn = styled.button`
