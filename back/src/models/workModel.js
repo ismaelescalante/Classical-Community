@@ -2,15 +2,22 @@ const mongoose = require('mongoose')
 const Joi = require('joi')
 Joi.objectId = require('joi-objectid')(Joi)
 
-
+const reviewSchema = new mongoose.Schema({
+    conductor: {type: String, required: true},
+    year: {type: String, required: true},
+    orchestra: {type: String, required: true},
+    label: {type: String, required: true},
+    review: {type: String, required: true},
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'userModel'
+    }
+})
 const workSchema = new mongoose.Schema({
     title: String,
     composer: String,
     idWork: String,
-    reviews: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'reviewModel'
-    }]
+    reviews: [{type: new mongoose.Schema(reviewSchema)}]
 })
 
 const Work = mongoose.model('works', workSchema)
