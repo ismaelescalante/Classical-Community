@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { LoginContainer, LoginTitle, LoginForm, LoginName, LoginEmail, LoginPass, LoginBtn, LoginChangeMode } from '../styles/LoginElements'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import AuthConsumer from '../hooks/useAuth'
 
 
 const Login = () => {
@@ -12,6 +13,9 @@ const Login = () => {
     const [pass, setPass] = useState('')
 
     const navigate = useNavigate()
+
+    const [user, dispatch] = AuthConsumer()
+    
 
     const processChange = e => {
         e.preventDefault()
@@ -29,6 +33,8 @@ const Login = () => {
 
       const { data } = await axios.post('http://localhost:5000/users/', newUser)
       console.log(data)
+      const token = data.headers['x-auth-token']
+      localStorage.setItem('token', token)
       navigate('/')
     }
 
@@ -40,8 +46,10 @@ const Login = () => {
         password: pass
       }
 
-      const { data } = await axios.post('http://localhost:5000/auth/', loggedUser)
-      console.log(data)
+      const response = await axios.post('http://localhost:5000/auth/', loggedUser)
+      const token = response.headers['x-auth-token']
+      localStorage.setItem('token', token)
+      dispatch({type: 'login'})
 
       navigate('/')
 

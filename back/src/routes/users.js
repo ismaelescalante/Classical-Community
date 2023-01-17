@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const {validate} = require('../models/userModel')
 const express = require('express')
 const router = express.Router()
+const jwt = require('jsonwebtoken')
 
 router.get('/', async (req, res) => {
     const result = await User.find({})
@@ -22,8 +23,9 @@ router.post('/', async (req, res) => {
     const hash = await bcrypt.hash(user.password, salt)
 
     user.password = hash
+    const token = jwt.sign({name: user.name}, process.env.JWT_PRIVATE_KEY)
     await user.save()
-    res.send({name: user.name, email: user.email})
+    res.header('x-auth-token', token).header('access-control-expose-headers', 'x-auth-token').send({name: user.name, email: user.email})
 })
 
 

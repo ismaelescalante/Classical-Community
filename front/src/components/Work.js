@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import { WorkContainer, WorkTitle, WorkComposer, WorkForm, WorkText, WorkConductor, WorkYear, WorkOrchestra, WorkLabel, WorkReview, WorkSubmit, WorkReviews, WorkDetail, WorkAuthor } from '../styles/WorkElements'
 import _ from 'lodash'
+import jwt_decode from 'jwt-decode'
 
 const Work = () => {
 
@@ -14,7 +15,9 @@ const Work = () => {
     const [label, setLabel] = useState('')
     const [review, setReview] = useState('')
     let {workId} = useParams()
-    
+
+
+     
     useEffect(() => {
       const getWork = async () => {
         const dbCall = await fetch(`http://localhost:5000/works/${workId}`)
@@ -45,14 +48,20 @@ const Work = () => {
       getWork()
     }, [workId])
 
+    function getCurrentUser() {
+      try {
+        const token = localStorage.getItem('token');
+        return jwt_decode(token);
+      } catch (ex) {
+        return null;
+      }
+    }
+
+    const currentUser = getCurrentUser()
     
 
     const handleSubmit = async (e) => {
-      // e.preventDefault()
-
-      const workCall = await fetch(`http://localhost:5000/works/${workId}`)
-      const workData = await workCall.json()
-
+      
 
       const newReview = [{
         conductor,
@@ -60,7 +69,7 @@ const Work = () => {
         orchestra,
         label,
         review,
-        author: '63bc33f2e3cb6a9aa0d888a2'
+        author: currentUser.name
       }]
 
       const newWork = {
@@ -70,7 +79,7 @@ const Work = () => {
         reviews: newReview
       }
 
-      if(_.isEmpty(workData)){
+      if(_.isEmpty(work.reviews)){
         const { data } = await axios.post('http://localhost:5000/works/', newWork)
         console.log(data)
       } else{
@@ -105,7 +114,9 @@ const Work = () => {
        }
         
       <hr />
-       <WorkText>Submit a review of your favorite version of this work</WorkText>
+      {currentUser ? 
+        <>
+      <WorkText>Submit a review of your favorite version of this work</WorkText>
        <WorkForm>
         Conductor <WorkConductor onChange={e => setConductor(e.target.value)} value={conductor}></WorkConductor>
         Year <WorkYear onChange={e => setYear(e.target.value)} value={year}></WorkYear>
@@ -113,7 +124,8 @@ const Work = () => {
         Label <WorkLabel onChange={e => setLabel(e.target.value)} value={label}></WorkLabel>
         Review <WorkReview rows="15" cols="60" onChange={e => setReview(e.target.value)} value={review}></WorkReview>
         <WorkSubmit type='submit' onClick={handleSubmit}>Submit</WorkSubmit>
-       </WorkForm>
+       </WorkForm></> : "Log in to submit a review"}
+       
         
     </WorkContainer>
   )
