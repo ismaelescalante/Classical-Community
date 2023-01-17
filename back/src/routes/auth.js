@@ -20,7 +20,7 @@ router.post('/', validator(reqSchema), async (req, res) => {
 
     const token = jwt.sign({name: user.name}, process.env.JWT_PRIVATE_KEY)
 
-    res.header('x-auth-token', token).send('Logged in')
+    res.header('x-auth-token', token).header('access-control-expose-headers', 'x-auth-token').send('Logged in')
 })
 
 

@@ -8,10 +8,7 @@ const reviewSchema = new mongoose.Schema({
     orchestra: {type: String, required: true},
     label: {type: String, required: true},
     review: {type: String, required: true},
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'userModel'
-    }
+    author: {type: String}
 })
 const workSchema = new mongoose.Schema({
     title: String,

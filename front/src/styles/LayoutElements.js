@@ -60,3 +60,25 @@ export const NavLinks = styled(NavLink)`
 export const MainContent = styled.div`
     height: 100vh;
 `
+
+export const NavLog = styled.button`
+    cursor: pointer;
+    padding: 0.2rem;
+    font-size: 18px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    font-family: 'Ibarra Real Nova';
+    font-weight: 700;
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+
+    &:hover{
+        background-color: white;
+        color: black;
+    }
+`
+
+export const NavWelcome = styled.p`
+    font-weight: 500;
+`
