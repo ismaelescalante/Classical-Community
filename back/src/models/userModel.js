@@ -3,13 +3,10 @@ const Joi = require('joi')
 Joi.objectId = require('joi-objectid')(Joi)
 
 const userSchema = new mongoose.Schema({
-    name: {type: String, required: true, unique: true},
-    email: {type: String, required: true, unique: true},
+    name: {type: String, required: true },
+    email: {type: String, required: true},
     password: {type: String, required: true},
-    posts: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'reviewModel'
-    }]
+    isAdmin: Boolean,
 })
 
 const User = mongoose.model('users', userSchema)
@@ -17,9 +14,9 @@ const User = mongoose.model('users', userSchema)
 function validateUser(user){
     const schema = Joi.object({
         name: Joi.string().required(),
-        email: Joi.string().required(),
+        email: Joi.string().email().required(),
         password: Joi.string().required(),
-        posts: Joi.array()
+        isAdmin: Joi.boolean()
     })
 
     return schema.validate(user)

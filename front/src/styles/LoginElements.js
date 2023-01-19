@@ -81,5 +81,16 @@ export const LoginChangeMode = styled.button`
     font-size: 20px;
     background-color: white;
     border: none;
-    font-family: 'Ibarra Real Nova'
+    font-family: 'Ibarra Real Nova';
+`
+
+export const LoginError = styled.p`
+    font-size: 18px; 
+    background-color: #d62433;
+    padding: 0.5rem;
+    color: white;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: 40%;
+    text-align: center;
 `

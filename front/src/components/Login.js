@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { LoginContainer, LoginTitle, LoginForm, LoginName, LoginEmail, LoginPass, LoginBtn, LoginChangeMode } from '../styles/LoginElements'
+import { LoginContainer, LoginTitle, LoginForm, LoginName, LoginEmail, LoginPass, LoginBtn, LoginChangeMode, LoginError } from '../styles/LoginElements'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import AuthConsumer from '../hooks/useAuth'
+
 
 
 const Login = () => {
@@ -11,6 +12,7 @@ const Login = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
+    const [error, setError] = useState(null)
 
     const navigate = useNavigate()
 
@@ -20,6 +22,7 @@ const Login = () => {
     const processChange = e => {
         e.preventDefault()
         setIsRegister(!isRegister)
+        setError('')
     }
 
     const processRegister = async (e) => {
@@ -28,14 +31,42 @@ const Login = () => {
       const newUser = {
         name,
         email,
-        password: pass
+        password: pass,
+        isAdmin: false
       }
 
-      const { data } = await axios.post('http://localhost:5000/users/', newUser)
-      console.log(data)
-      const token = data.headers['x-auth-token']
-      localStorage.setItem('token', token)
-      navigate('/')
+      try {
+        const response = await axios.post('http://localhost:5000/users/', newUser)
+        const token = response.headers['x-auth-token']
+        localStorage.setItem('token', token)
+        navigate('/')
+      } catch (error) {
+        console.log(error)
+        if(error.response.data === "Email or password not valid"){
+          setError('Email or password not valid')
+        }
+
+        if(error.response.data === "\"password\" is not allowed to be empty"){
+          setError("Please enter a password")
+        }
+
+        if(error.response.data === "\"email\" is not allowed to be empty"){
+          setError("Please enter an email")
+        }
+
+        if(error.response.data === "\"name\" is not allowed to be empty"){
+          setError("Please enter a username")
+        }
+
+        if(error.response.data === "\"email\" must be a valid email"){
+          setError("Email format is not valid")
+        }
+
+        if(error.response.data === 'User already exists'){
+          setError("User already exists")
+        }
+      }
+      
     }
 
     const processLogin = async (e) => {
@@ -45,13 +76,32 @@ const Login = () => {
         email,
         password: pass
       }
-
-      const response = await axios.post('http://localhost:5000/auth/', loggedUser)
+      try {
+        const response = await axios.post('http://localhost:5000/auth/', loggedUser)
       const token = response.headers['x-auth-token']
       localStorage.setItem('token', token)
       dispatch({type: 'login'})
 
       navigate('/')
+      } catch (error) {
+        console.log(error)
+        if(error.response.data === "Email or password not valid"){
+          setError('Email or password not valid')
+        }
+
+        if(error.response.data === "\"password\" is not allowed to be empty"){
+          setError("Please enter a password")
+        }
+
+        if(error.response.data === "\"email\" is not allowed to be empty"){
+          setError("Please enter an email")
+        }
+
+        if(error.response.data === "\"email\" must be a valid email"){
+          setError("Email format is not valid")
+        }
+      }
+      
 
     }
 
@@ -101,6 +151,7 @@ const Login = () => {
             
 
             <LoginBtn onClick={isRegister ? processRegister : processLogin }> {isRegister ? 'Register': 'Login'}</LoginBtn>
+            { error ? <LoginError>{error}</LoginError> : null}
             <LoginChangeMode onClick={processChange}>{ isRegister ? 'Already have an account?' : `You aren't registered?`}</LoginChangeMode>
         </LoginForm>
     </LoginContainer>

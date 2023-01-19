@@ -8,7 +8,8 @@ const router = express.Router()
 
 const reqSchema = Joi.object({
     email: Joi.string().required().email().messages({"any.required": 'Email is required'}),
-    password: Joi.string().required().messages({"any.required": 'Password is required'})
+    password: Joi.string().required().messages({"any.required": 'Password is required'}),
+    isAdmin: Joi.boolean()
 })
 
 router.post('/', validator(reqSchema), async (req, res) => {
@@ -18,7 +19,7 @@ router.post('/', validator(reqSchema), async (req, res) => {
     const isValid = await bcrypt.compare(req.body.password, user.password)
     if(!isValid) return res.status(400).send('Email or password not valid')
 
-    const token = jwt.sign({name: user.name}, process.env.JWT_PRIVATE_KEY)
+    const token = jwt.sign({name: user.name, isAdmin: user.isAdmin}, process.env.JWT_PRIVATE_KEY)
 
     res.header('x-auth-token', token).header('access-control-expose-headers', 'x-auth-token').send('Logged in')
 })

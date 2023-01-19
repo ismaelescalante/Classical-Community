@@ -17,6 +17,10 @@ export const HomeContent = styled.div`
     color: white;
     padding: 2rem;
     font-family: 'Ibarra Real Nova';
+
+    /* @media(max-width: 2168px){
+        margin-top: -750px;
+    } */
 `
 
 
@@ -27,14 +31,18 @@ export const HomeBg = styled.div`
    left: 0;
    width: 100%;
    height: 100vh;
-   overflow: hidden;
-
-   
 `
 
 export const ImgBg = styled.img`
     width: 100%;
     height: 100%;
+    @media(max-width: 790px){
+        height: 70%;
+    }
+
+    @media(max-width: 790px){
+        height: 100%;
+    }
 `
 
 export const HomeTitle = styled.h1`
@@ -42,12 +50,18 @@ export const HomeTitle = styled.h1`
     font-weight: 700;
     text-shadow: 2px 2px black;
     margin-bottom: 15px;
+    @media(max-width: 681px){
+        font-size: 26px;
+    }
 `
 
 export const HomeP = styled.p`
     font-size: 32px;
     font-weight: 500;
     text-shadow: 2px 2px black;
+    @media(max-width: 681px){
+        font-size: 18px;
+    }
 `
 
 export const HomeAboutContainer = styled.div`
@@ -58,18 +72,24 @@ export const HomeAboutContainer = styled.div`
     font-family: 'Ibarra Real Nova';
     height: 100vh;
     padding-left: 1.5rem;
+    padding-top: 2rem;
+    @media(max-width: 403px){
+        padding-top: 3rem;
+    }
 `
 
 export const HomeSubTitle = styled.h2`
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 15px;
+    
 `
 
 export const HomeText = styled.p`
      font-size: 28px;
     font-weight: 500;
     margin-bottom: 15px;
+    
 `
 
 export const HomeBtn = styled(NavLink)`
@@ -94,6 +114,12 @@ export const AboutImg1 = styled.img`
     width: 300px;
     padding-top: 3rem;
     margin-top: 75px;
+    @media(max-width: 767px){
+        margin-top: 100px;
+    }
+    @media(max-width: 603px){
+        margin-top: 150px;
+    }
 `
 export const AboutImg2 = styled.img`
     width: 300px;

@@ -84,8 +84,8 @@ export const WorkReviews = styled.ul`
     border-radius: 5px;
     width: 350px;
     padding: 1rem;
-    box-shadow: 4px 4px 3px black;
-    background-color: whitesmoke;
+    box-shadow: 4px 4px 3px gray;
+    background-color: #fafae6;
 `
 
 export const WorkDetail = styled.li`
@@ -96,4 +96,22 @@ export const WorkDetail = styled.li`
 export const WorkAuthor = styled.p`
     font-weight: 700;
     font-size: 20px;
+`
+
+export const DeleteBtn = styled.button`
+    cursor: pointer;
+    font-family: 'Ibarra Real Nova';
+    font-size: 15px;
+    padding: 0.2rem;
+    font-weight: 700;
+    margin-top: 15px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 75px;
+    background-color: #d62433;
+    color: white;
+
+    &:hover{
+        background-color: #ab0f29;
+    }
 `

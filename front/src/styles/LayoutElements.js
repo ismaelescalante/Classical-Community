@@ -6,6 +6,7 @@ export const NavbarContainer = styled.nav`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     background-color: white;
     color: black;
     border-bottom: 2px solid black;
@@ -17,6 +18,9 @@ export const NavbarLogo = styled.h1`
     color: black;
     font-weight: 700;
     font-size: 28px;
+    @media(max-width: 448px){
+        font-size: 20px;
+    }
 `
 
 
@@ -55,6 +59,10 @@ export const NavLinks = styled(NavLink)`
     &:hover::before{
         transform: scaleX(1)
     }
+
+    @media(max-width: 448px){
+        font-size: 15px;
+    }
 `
 
 export const MainContent = styled.div`
@@ -77,8 +85,18 @@ export const NavLog = styled.button`
         background-color: white;
         color: black;
     }
+
+    @media(max-width: 448px){
+        font-size: 12px;
+    }
 `
 
 export const NavWelcome = styled.p`
     font-weight: 500;
+    font-size: 20px;
+    margin-top: 5px;
+
+    @media(max-width: 550px){
+        display: none;
+    }
 `

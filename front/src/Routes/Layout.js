@@ -3,7 +3,6 @@ import { Outlet } from 'react-router-dom'
 import {useNavigate} from 'react-router-dom'
 import { NavbarContainer, NavbarLogo, MainContent, NavItem, NavLinks, NavLog, NavWelcome } from '../styles/LayoutElements'
 import ScrollToTop from '../components/ScrollToTop'
-import AuthConsumer from '../hooks/useAuth'
 import jwt_decode from 'jwt-decode'
 
 const Layout = () => {

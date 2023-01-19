@@ -12,11 +12,18 @@ export const ComposersHeader = styled.div`
 export const ComposersTitle = styled.h1`
     font-size: 28px;
     padding-top: 1rem;
+    @media(max-width: 790px){
+        font-size: 20px;
+    }
 `
 export const ComposersP = styled.p`
     font-weight: 500;
     font-size: 22px;
     padding-bottom: 2rem;
+
+    @media(max-width: 790px){
+        font-size: 15px;
+    }
 `
 
 export const ComposersList = styled.div`
@@ -34,9 +41,12 @@ export const Composer = styled(NavLink)`
     font-family: 'Ibarra Real Nova';
 
     
-    position: relative;
+    /* position: relative; */
     
     font-weight: 500;
 
+    @media(max-width: 790px){
+        font-size: 12px;
+    }
     
 `
