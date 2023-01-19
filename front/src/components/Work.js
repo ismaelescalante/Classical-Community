@@ -151,7 +151,7 @@ const Work = () => {
           <WorkDetail>Year: {review.year}</WorkDetail>
           <WorkDetail>Orchestra: {review.orchestra}</WorkDetail>
           <WorkDetail>Label: {review.label}</WorkDetail>
-          <WorkDetail>Review: {review.review}</WorkDetail>
+          <WorkDetail>{review.review}</WorkDetail>
           { !currentUser ? null : currentUser.isAdmin ? <DeleteBtn onClick={e => deleteReview(review.id)}>Delete</DeleteBtn> : null}
         </WorkReviews> 
        )) 

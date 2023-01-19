@@ -91,6 +91,7 @@ export const WorkReviews = styled.ul`
 export const WorkDetail = styled.li`
     font-weight: 500;
     font-size: 18px;
+    margin-top: 10px;
 `
 
 export const WorkAuthor = styled.p`
