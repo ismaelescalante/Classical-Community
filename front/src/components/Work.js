@@ -26,7 +26,7 @@ const Work = () => {
      
     useEffect(() => {
       const getWork = async () => {
-        const dbCall = await fetch(`https://classical-community.onrender.com//works/${workId}`)
+        const dbCall = await fetch(`https://classical-community.onrender.com/works/${workId}`)
   
         let dbData;
         try {
