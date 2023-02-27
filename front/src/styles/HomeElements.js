@@ -17,18 +17,10 @@ export const HomeContent = styled.div`
     color: white;
     padding: 2rem;
     font-family: 'Ibarra Real Nova';
-
-    /* @media(max-width: 2168px){
-        margin-top: -750px;
-    } */
 `
 
 
 export const HomeBg = styled.div`
-   top: 0;
-   bottom: 0;
-   right: 0;
-   left: 0;
    width: 100%;
    height: 100vh;
 `

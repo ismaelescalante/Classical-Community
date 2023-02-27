@@ -84,7 +84,7 @@ export const WorkReviews = styled.ul`
     border-radius: 5px;
     width: 350px;
     padding: 1rem;
-    box-shadow: 4px 4px 3px gray;
+    /* box-shadow: 4px 4px 3px gray; */
     background-color: #fafae6;
 `
 

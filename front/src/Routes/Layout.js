@@ -27,6 +27,7 @@ const Layout = () => {
       localStorage.removeItem('token');
       navigate('/')
     }
+    
   return (
     <>
     <ScrollToTop />
