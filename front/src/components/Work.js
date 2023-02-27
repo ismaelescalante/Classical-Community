@@ -26,7 +26,7 @@ const Work = () => {
      
     useEffect(() => {
       const getWork = async () => {
-        const dbCall = await fetch(`http://localhost:5000/works/${workId}`)
+        const dbCall = await fetch(`https://classical-community.onrender.com//works/${workId}`)
   
         let dbData;
         try {
@@ -70,7 +70,7 @@ const Work = () => {
        const idReview = {
         id: id
        }
-      await axios.put(`http://localhost:5000/works/update/${workId}`, idReview)
+      await axios.put(`https://classical-community.onrender.com/works/update/${workId}`, idReview)
 
       window.location.reload(false)
       
@@ -100,12 +100,12 @@ const Work = () => {
       }
 
       if(_.isEmpty(work.reviews)){
-        const { data } = await axios.post('http://localhost:5000/works/', newWork)
+        const { data } = await axios.post('https://classical-community.onrender.com/works/', newWork)
         console.log(data)
         window.location.reload(false)
       } else{
         try {
-          const {review} = await axios.put(`http://localhost:5000/works/${workId}`, newReview)
+          const {review} = await axios.put(`https://classical-community.onrender.com/works/${workId}`, newReview)
           console.log(review)
           setError(null)
           window.location.reload(false)
