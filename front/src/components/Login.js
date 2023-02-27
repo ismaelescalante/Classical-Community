@@ -36,7 +36,7 @@ const Login = () => {
       }
 
       try {
-        const response = await axios.post('https://classical-community.onrender.com//users/', newUser)
+        const response = await axios.post('https://classical-community.onrender.com/users/', newUser)
         const token = response.headers['x-auth-token']
         localStorage.setItem('token', token)
         navigate('/')
@@ -77,7 +77,7 @@ const Login = () => {
         password: pass
       }
       try {
-        const response = await axios.post('https://classical-community.onrender.com//auth/', loggedUser)
+        const response = await axios.post('https://classical-community.onrender.com/auth/', loggedUser)
       const token = response.headers['x-auth-token']
       localStorage.setItem('token', token)
       dispatch({type: 'login'})
