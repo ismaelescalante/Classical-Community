@@ -11,42 +11,62 @@ export const ComposersHeader = styled.div`
 
 export const ComposersTitle = styled.h1`
     font-size: 28px;
-    padding-top: 1rem;
-    @media(max-width: 790px){
-        font-size: 20px;
-    }
-`
-export const ComposersP = styled.p`
-    font-weight: 500;
-    font-size: 22px;
-    padding-bottom: 2rem;
-
-    @media(max-width: 790px){
-        font-size: 15px;
-    }
+    margin-top: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
 `
 
 export const ComposersList = styled.div`
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    padding-bottom: 1rem;
-    padding-left: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-left: 50px;
+    margin-top: 50px;
+
+    @media(max-width: 1170px){
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media(max-width: 760px){
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media(max-width: 500px){
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @media(max-width: 500px){
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       margin-left: 25px;
+    }
 `
 export const Composer = styled(NavLink)`
     text-decoration: none;
-    padding: 1rem;
-    font-size: 18px;
-    font-weight: 500;
-    color: black;
-    font-family: 'Ibarra Real Nova';
+    text-align: center;
+    font-size: 22px;
+    width: 200px;
+    height: 250px;
+    box-shadow: 0.5px 0.5px 5px #aaaaaa;
+    background-color: white;
+    color: #0e0e0e;
+    letter-spacing: 0.5px;
+    font-family: 'Bebas Neue', serif;
+    z-index: 0;
+    transition: all 200ms ease-in-out;
 
-    
-    /* position: relative; */
-    
-    font-weight: 500;
-
-    @media(max-width: 790px){
-        font-size: 12px;
+    &:hover{
+        transform: scale(1.1);
+        
     }
+
     
+    
+`
+
+export const ComposerImg = styled.img`
+    height: 200px;
+    margin-bottom: 10px;
+    transition: all 200ms ease-in-out;
 `

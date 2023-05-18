@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import { WorkContainer, WorkTitle, WorkComposer, WorkForm, WorkText, WorkConductor, WorkYear, WorkOrchestra, WorkLabel, WorkReview, WorkSubmit, WorkReviews, WorkDetail, WorkAuthor, DeleteBtn } from '../styles/WorkElements'
+import { WorkContainer, WorkTitle, WorkComposer, WorkForm, WorkText, WorkInput, WorkReview, WorkSubmit, WorkReviews, WorkDetail, WorkAuthor, DeleteBtn } from '../styles/WorkElements'
 import _ from 'lodash'
 import jwt_decode from 'jwt-decode'
 import { v4 as uuidv4 } from 'uuid';
@@ -106,7 +106,6 @@ const Work = () => {
       } else{
         try {
           const {review} = await axios.put(`https://classical-community.onrender.com/works/${workId}`, newReview)
-          console.log(review)
           setError(null)
           window.location.reload(false)
         } catch (error) {
@@ -152,7 +151,7 @@ const Work = () => {
           <WorkDetail>Orchestra: {review.orchestra}</WorkDetail>
           <WorkDetail>Label: {review.label}</WorkDetail>
           <WorkDetail>{review.review}</WorkDetail>
-          { !currentUser ? null : currentUser.isAdmin ? <DeleteBtn onClick={e => deleteReview(review.id)}>Delete</DeleteBtn> : null}
+          { !currentUser ? null : currentUser.isAdmin ? <DeleteBtn onClick={e => deleteReview(review.id)}>Delete review</DeleteBtn> : null}
         </WorkReviews> 
        )) 
        }
@@ -162,10 +161,10 @@ const Work = () => {
         <>
       <WorkText>Submit a review of your favorite version of this work</WorkText>
        <WorkForm>
-        Conductor <WorkConductor onChange={e => setConductor(e.target.value)} value={conductor}></WorkConductor>
-        Year <WorkYear onChange={e => setYear(e.target.value)} value={year}></WorkYear>
-        Orchestra <WorkOrchestra onChange={e => setOrchestra(e.target.value)} value={orchestra}></WorkOrchestra>
-        Label <WorkLabel onChange={e => setLabel(e.target.value)} value={label}></WorkLabel>
+        Conductor <WorkInput onChange={e => setConductor(e.target.value)} value={conductor}></WorkInput>
+        Year <WorkInput onChange={e => setYear(e.target.value)} value={year}></WorkInput>
+        Orchestra <WorkInput onChange={e => setOrchestra(e.target.value)} value={orchestra}></WorkInput>
+        Label <WorkInput onChange={e => setLabel(e.target.value)} value={label}></WorkInput>
         Review <WorkReview rows="15" cols="60" onChange={e => setReview(e.target.value)} value={review}></WorkReview>
         {error ? <LoginError>{error}</LoginError> : null}
         <WorkSubmit type='submit' validSchema={schema} onClick={handleSubmit}>Submit</WorkSubmit>
