@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {ComposersHeader, ComposersTitle, ComposersP, ComposersList, Composer} from '../styles/ComposersElements'
+import {ComposersHeader, ComposersTitle, ComposersList, Composer, ComposerImg} from '../styles/ComposersElements'
 
 const Composers = () => {
 
@@ -23,13 +23,14 @@ const Composers = () => {
     <ComposersTitle>
       List of Composers
     </ComposersTitle>
-    <ComposersP>Here is a list of all the composers. Click on any composer to see a list of his works</ComposersP>
     </ComposersHeader>
 
     <ComposersList>
       {composers.map((composer) => (
         
-        <Composer to={`${composer.id}`} key={composer.id}>{composer.name}</Composer>
+        <Composer to={`${composer.id}`} key={composer.id}>
+          <ComposerImg src={composer.portrait}></ComposerImg>
+          {composer.name}</Composer>
       
     ))}
     </ComposersList>

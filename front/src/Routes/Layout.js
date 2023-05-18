@@ -21,7 +21,6 @@ const Layout = () => {
     }
 
     const currentUser = getCurrentUser()
-    console.log(currentUser)
 
     const logout = async (e) => {
       localStorage.removeItem('token');

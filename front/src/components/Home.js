@@ -1,27 +1,16 @@
 import React from 'react'
-import { HomeContainer, HomeTitle, HomeP, HomeBg, ImgBg, HomeContent } from '../styles/HomeElements'
+import { HomeContainer, HomeTitle, HomeAbout, AboutDescription, AboutBtn } from '../styles/HomeElements'
 import Img from '../../src/images/img.jpg'
-import HomeAbout from './HomeAbout'
 
 const Home = () => {
   return (
     <HomeContainer>
-      <HomeBg>
-        <ImgBg src={Img}/>
-        <HomeContent>
-      <HomeTitle>
-        Welcome to Classical Community
-      </HomeTitle>
-      <HomeP>
-        A community for music lovers to share the best gems of classical music
-      </HomeP>
-      </HomeContent>
-      </HomeBg>
-      
-
-      <HomeAbout />
-      
-    </HomeContainer>
+      <HomeTitle>This is your community</HomeTitle>
+      <HomeAbout>
+        <AboutDescription>SUBMIT NOW YOUR REVIEWS <br /> OF THE BEST RECORDINGS OF ALL TIME</AboutDescription>
+        <AboutBtn to='composers'>GET STARTED</AboutBtn>
+      </HomeAbout>
+       </HomeContainer>
   )
 }
 

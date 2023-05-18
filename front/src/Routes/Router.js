@@ -9,12 +9,13 @@ import Login from "../components/Login";
 export const router = createBrowserRouter([
     {
         path: '/',
+        element: <Home />
+    },
+    {
+        path: '/',
         element: <Layout />,
         children: [
-            {
-                path: '/',
-                element: <Home />
-            },
+           
             {
                 path: 'composers',
                 element: <Composers />

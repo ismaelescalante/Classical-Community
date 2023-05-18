@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { LoginContainer, LoginTitle, LoginForm, LoginName, LoginEmail, LoginPass, LoginBtn, LoginChangeMode, LoginError } from '../styles/LoginElements'
+import { LoginContainer, LoginTitle, LoginForm, LoginInput, LoginBtn, LoginChangeMode, LoginError } from '../styles/LoginElements'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import AuthConsumer from '../hooks/useAuth'
@@ -39,7 +39,7 @@ const Login = () => {
         const response = await axios.post('https://classical-community.onrender.com/users/', newUser)
         const token = response.headers['x-auth-token']
         localStorage.setItem('token', token)
-        navigate('/')
+        navigate('/composers')
       } catch (error) {
         console.log(error)
         if(error.response.data === "Email or password not valid"){
@@ -82,7 +82,7 @@ const Login = () => {
       localStorage.setItem('token', token)
       dispatch({type: 'login'})
 
-      navigate('/')
+      navigate('/composers')
       } catch (error) {
         console.log(error)
         if(error.response.data === "Email or password not valid"){
@@ -112,37 +112,37 @@ const Login = () => {
 
           {isRegister ? (
             <>
-            Username<LoginName
+            USERNAME<LoginInput
              onChange={e => setName(e.target.value)}
              value={name}
              type="text" 
-            ></LoginName>
+            ></LoginInput>
 
-            Email<LoginEmail
+            EMAIL<LoginInput
              onChange={e => setEmail(e.target.value)}
              value={email}
              type="email" 
-            ></LoginEmail>
+            ></LoginInput>
             
             
-            Password<LoginPass 
+            PASSWORD<LoginInput
             onChange={e => setPass(e.target.value)}
             value={pass}
             type="password" 
-            ></LoginPass>
+            ></LoginInput>
             
             </>
-            ) : (<>Email<LoginEmail
+            ) : (<>EMAIL<LoginInput
               onChange={e => setEmail(e.target.value)}
               value={email}
               type="email" 
-             ></LoginEmail>
+             ></LoginInput>
  
-             Password<LoginPass 
+             PASSWORD<LoginInput 
              onChange={e => setPass(e.target.value)}
              value={pass}
              type="password" 
-             ></LoginPass>
+             ></LoginInput>
              </>)}
 
             

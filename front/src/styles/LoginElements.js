@@ -6,12 +6,13 @@ export const LoginContainer = styled.div`
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
-    font-family: 'Ibarra Real Nova';
+    font-family: 'Raleway';
 `
 export const LoginTitle = styled.h1`
-    font-weight: 700;
     margin-top: 20px;
     margin-bottom: 20px;
+    font-family: 'Bebas Neue';
+    font-weight: 400;
 `
 
 export const LoginForm = styled.form`
@@ -19,60 +20,55 @@ export const LoginForm = styled.form`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    width: 600px;
-    height: 400px;
-    border-radius: 15px;
-    border: 2px solid black;
+    background-color: white;
+    box-shadow: 0.5px 0.5px 5px #aaaaaa;
+    width: 45%;
+    height: 450px;
     font-weight: 500;
     font-size: 24px;
-`
-export const LoginName = styled.input`
-    outline: none;
-    width: 250px;
-    margin-top: -15px;
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 25px;
-    font-family: 'Ibarra Real Nova';
-     font-size: 20px;   
-`
 
-export const LoginEmail = styled.input`
-    outline: none;
-    width: 250px;
-    margin-top: -15px;
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 25px;
-    font-family: 'Ibarra Real Nova';
-     font-size: 20px;   
+    @media(max-width: 890px){
+        width: 70%;
+    }
+
+    @media(max-width: 650px){
+        width: 85%;
+    }
 `
-export const LoginPass = styled.input`
+export const LoginInput = styled.input`
     outline: none;
-    width: 250px;
+    border: none;
+    background-color: #f9f9f9;
+    box-shadow: 0.5px 0.5px 4px #aaaaaa;
+    padding: 0.5rem;
+    width: 50%;
+    font-family: 'Raleway';
     margin-top: -15px;
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 25px;
-    font-family: 'Ibarra Real Nova';
-    font-size: 20px;
+    height: 20px;
+    font-size: 20px;   
+
+    @media(max-width: 500px){
+        width: 70%;
+    }
 `
 
 export const LoginBtn = styled.button`
     cursor: pointer;
+    border: none;
     padding: 0.5rem;
-    font-size: 20px;
-    width: 120px;
-    background-color: black;
-    color: white;
-    font-family: 'Ibarra Real Nova';
-    font-weight: 700;
-    border-radius: 10px;
+    font-size: 26px;
+    width: 25%;
+    background-color: #e7bf79;
+    font-family: 'Bebas Neue';
     transition: all 300ms ease-in-out;
 
     &:hover{
-        background-color: white;
-        color: black;
+        background-color: #0e0e0e;
+        color: white;
+    }
+
+    @media(max-width: 500px){
+        width: 50%;
     }
 `
 export const LoginChangeMode = styled.button`
@@ -81,7 +77,7 @@ export const LoginChangeMode = styled.button`
     font-size: 20px;
     background-color: white;
     border: none;
-    font-family: 'Ibarra Real Nova';
+    font-family: 'Raleway';
 `
 
 export const LoginError = styled.p`
